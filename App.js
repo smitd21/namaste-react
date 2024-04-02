@@ -1,3 +1,5 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
 // ! USING JS
 // const heading = document.createElement("h1");
 // heading.innerHTML = "Hello World from JavaScript!";
@@ -21,7 +23,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(heading);
 
 // * NESTED HTML STRUCTURE USING REACT
-const heading1 = React.createElement("h2", {id: 'heading1'}, "Hello Mumbai from React");
+const heading1 = React.createElement("h2", {id: 'heading1'}, "Hello Mumbai from React🚀");
 const child = React.createElement("div", {id: 'child'}, [heading, heading1]); // To create sibling - use ARRAY of children
 const child1 = React.createElement("div", {id: 'child1'}, [heading, heading1]);
 const parent = React.createElement("div", {id: 'parent'}, [child, child1]);
