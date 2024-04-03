@@ -37,3 +37,51 @@ console.log(heading1); // it's children inside the props object will be it's inn
 
 
 // All this become very tedious - SO THAT'S WHY WE USE JSX
+
+//! JSX
+
+//React Element
+const jsxHeading = <h1 className="headings" tabIndex="1">Namaste React using JSX!!🚀</h1>;
+console.log('JSX Heading', jsxHeading);  // React Element (JS Obj)
+root.render(jsxHeading);  //* Render React Element on to web-page
+
+// React Element inside React Element
+const reactEle = <span>React element {jsxHeading}</span>;
+
+// React Functional Component
+// Included React Component, React Elements & some piece of JS inside it
+const Title = () =>{
+ return <h1>Namaste React!!!!! 🚀🚀</h1>
+}
+// React Component inside React Element
+const reactEleNComp = <span>React element {<Title/>}</span>;
+
+const number = 1000;
+const HeadingComponent = () => {
+ return (
+  <div>
+   <h2>{ number+ 's' + 200 }</h2>
+   {console.log(number)}
+   {jsxHeading}
+   {reactEle}
+   {reactEleNComp}
+   <Title/>
+   <Title></Title>
+   {Title()}
+   <h2 className="headings">Functional Component with Nested Structure</h2>
+  </div>
+ );
+}
+
+root.render(<HeadingComponent />);  //* Render React Functional Component RFC on to web-page
+
+
+// const data = api.getData();
+// const Content = () => {
+//  return (
+//  <div>
+//   <h1>Namaste React! 🚀</h1>
+//   <p>{data}</p>  // JSX will sanitize this data (so any malicious data cannot be just blindly executed)
+//  </div>
+//  );
+// }
