@@ -70,8 +70,14 @@ body{
 .res-near{
  margin-top: 2rem;
  display: flex;
- flex-wrap: wrap;
+ flex-direction: column;
  justify-content: center;
+}
+.res-near h1, .filter{
+  text-align: center;
+}
+.filter{
+  margin-bottom: 2rem;
 }
 .res-near h1, .food-container h1{
  color: rgba(63, 63, 70);
