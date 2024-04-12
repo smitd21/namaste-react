@@ -136,3 +136,38 @@ body{
 .foods{
  display: flex;
 }
+
+.shimmer-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+.shimmer-card{
+  width: 273px;
+  height: 285px;
+  margin: 15px;
+  border-radius: 16px;
+  background-color: #f0f0f0;
+  margin: 20px;
+}
+.search-container{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.search-container input{
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-width: 1px;
+  outline-offset: 2px;
+  --tw-border-opacity: 1;
+  border-color: #f0f0f0;
+  border-radius: .375rem;
+}
+.search-container button{
+  margin-left: 1rem;
+}
