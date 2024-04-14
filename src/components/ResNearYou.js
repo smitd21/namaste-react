@@ -2,6 +2,7 @@ import { SWIGGY_URL } from "../utils/constants";
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 
 const ResNearYou =()=>{
@@ -67,7 +68,9 @@ const ResNearYou =()=>{
       <div className="res-container">
         {filteredRes.map((restaurants) => (
           // For each restaurants => return a (JSX) i.e <RestaurantCard /> (and pass data to it)
-          <RestaurantCard key={restaurants.info.id} resData={restaurants} />
+          <Link key={restaurants.info.id} to={`restaurant/${restaurants.info.id}`} style={{textDecoration: 'none', color: "#000"}}>
+            <RestaurantCard resData={restaurants} />
+          </Link>
         ))}
       </div>
     </div>
