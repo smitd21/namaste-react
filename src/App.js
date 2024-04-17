@@ -1,20 +1,31 @@
-import React from "react";
+import React, { lazy , Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import About from "./components/About";
+// import About from "./components/About"; // We'll not import About using normal import
 import Contact from "./components/Contact";
 import Error from './components/Error';
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import ResMenu from "./components/ResMenu";
+import Shimmer from "./components/Shimmer";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
+// import Grocery from './components/Grocery'; // We'll not import Grocery using normal import
+
+// Lazy load our Grocery Component
+const Grocery = lazy(()=> import('./components/Grocery'));
+const About = lazy(()=> import('./components/About'));
 
 const AppLayout = () => {
  return (
-  <div className="app">
-   <Header/>
-   <Outlet/>
-  </div>
- )
+   <Provider store={appStore}>
+     <div className="app">
+       <Header />
+       <Outlet />
+     </div>
+   </Provider>
+ );
 }
 // createBrowserRouter takes in Array of objects
 const appRouter = createBrowserRouter([
@@ -28,11 +39,19 @@ const appRouter = createBrowserRouter([
    },
    {
     path: '/about',
-    element: <About/>
+    element: <Suspense fallback={<Shimmer/>}><About/></Suspense>
    }, 
    {
     path: '/contact',
     element: <Contact/>
+   },
+   {
+    path: '/cart',
+    element: <Cart/>
+   },
+   {
+    path: '/grocery',
+    element: <Suspense fallback={<Shimmer/>}><Grocery/></Suspense>
    },
    {
     path: '/restaurant/:resId',

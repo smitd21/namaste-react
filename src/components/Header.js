@@ -4,10 +4,13 @@ import { IoIosArrowDown } from "react-icons/io";
 import { LOGO_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [isSignedIn , setIsSignedIn] = useState(false);
 
+  const onlineStatus = useOnlineStatus();
 
   useEffect(()=>{
     console.log('Use Effect CB Fn. triggered!!');
@@ -15,6 +18,10 @@ const Header = () => {
 
   console.log("RENDER HEADER COMPONENT");
 
+  //! Read the Store
+  // Header Component is subscribed to the store using a Selector (A Hook)
+  const cartItems = useSelector((store) => store.cart.items); //* useSelector gives us access to the Store - We can tell them what portion of the store we need access/subscribe to (Cart)
+  console.log(cartItems);
  return (
    <div className="header">
      <div className="logo-container">
@@ -23,6 +30,10 @@ const Header = () => {
      </div>
      <div className="nav-items">
        <ul>
+        <li>
+          Online Status :<div className="online-status" style={{background: onlineStatus ? 'green' : 'red' }}>
+          </div>
+        </li>
          <li>
           <Link to="/"><IoSearch/> Search</Link>
           </li>
@@ -36,7 +47,8 @@ const Header = () => {
           !isSignedIn ? setIsSignedIn(true) : setIsSignedIn(false)
          }}><Link to="/"><FaRegUser/>{ isSignedIn ? 'Sign Out' : 'Sign In'}</Link></li>
          <li>
-          <Link to="/cart"><IoCart/> Cart</Link>
+          <Link to="/grocery"><IoCart/> Grocery</Link>
+          <Link to="/cart"><IoCart/> Cart - ({cartItems?.length} Items)</Link>
           </li>
        </ul>
      </div>
