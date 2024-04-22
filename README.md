@@ -20,4 +20,4 @@
 - Lazy Dev Builds
 - Different Dev & Production Builds (Production takes more time - since it has more optimisation)
 
-# That's why we need a lot more things in order to make our web app faster & it's not just React.
+### That's why we need a lot more things in order to make our web app faster & it's not just React.
